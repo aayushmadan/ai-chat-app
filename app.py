@@ -60,7 +60,7 @@ def chat():
     try:
         response = requests.post(
             GROQ_API_URL,
-            headers=headers, 
+            headers=headers,
             json=payload,
             timeout=30
         )
