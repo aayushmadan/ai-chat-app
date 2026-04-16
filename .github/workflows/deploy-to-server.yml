@@ -28,7 +28,7 @@ jobs:
                     echo "Installing required packages & Creating directories"
                     sudo apt-get update && sudo apt install docker.io docker-compose-v2 -y
                     sudo usermod -aG docker $USER && newgrp docker
-                    mkdir -p flask-app-prod
+                    mkdir -p ai-chat-app-prod
             
             - name: Copy docker-compose.yml to remote server
               uses: appleboy/scp-action@v1
@@ -37,7 +37,7 @@ jobs:
                 username: ${{ secrets.EC2_SSH_USER }}
                 key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
                 source: "docker-compose.yml"
-                target: "/home/ubuntu/flask-app-prod"
+                target: "/home/ubuntu/ai-chat-app-prod"
                     
             - name: SSH to Production Server & Run the app
               uses: appleboy/ssh-action@v1.2.5
@@ -49,6 +49,6 @@ jobs:
                     export DOCKERHUB_USER=${{ vars.DOCKERHUB_USER }}
                     export DOCKER_TAG=${{ github.sha }}
                     echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ vars.DOCKERHUB_USER }} --password-stdin
-                    cd ~/flask-app-prod
+                    cd ~/ai-chat-app-prod
                     docker compose down && docker compose up -d --build --force-recreate --pull always
                     
