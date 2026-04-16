@@ -58,7 +58,12 @@ def chat():
     }
 
     try:
-        response = requests.post(GROQ_API_URL, headers=headers, json=payload, timeout=30)
+        response = requests.post(
+            GROQ_API_URL,
+            headers=headers, 
+            json=payload,
+            timeout=30
+        )
         response.raise_for_status()
         result = response.json()
         reply = result["choices"][0]["message"]["content"].strip()
@@ -67,15 +72,15 @@ def chat():
     except requests.exceptions.Timeout:
         return jsonify({"error": "Request timed out. Please try again."}), 504
 
-    except requests.exceptions.HTTPError as e:
+    except requests.exceptions.HTTPError:
         status = response.status_code
         if status == 401:
-            return jsonify({"error": "Service temporarily unavailable. Please try again later."}), 401
+            return jsonify({"error": "Service temporarily unavailable."}), 401
         if status == 429:
-            return jsonify({"error": "Service temporarily unavailable. Please try again later."}), 429
-        return jsonify({"error": "Service error. Please try again later."}), 500
+            return jsonify({"error": "Service temporarily unavailable."}), 429
+        return jsonify({"error": "Service error. Try again later."}), 500
 
-    except Exception as e:
+    except Exception:
         return jsonify({"error": "An error occurred. Please try again."}), 500
 
 
