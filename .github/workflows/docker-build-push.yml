@@ -9,8 +9,7 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        
         steps:
             - name: Code checkout
               uses: actions/checkout@v6

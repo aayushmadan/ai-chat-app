@@ -13,7 +13,6 @@ jobs:
             DOCKERHUB_USER: ${{ vars.DOCKERHUB_USER }}
             DOCKER_TAG: ${{ github.sha }}
 
-
         steps:
             - name: Checkout code
               uses: actions/checkout@v6
@@ -50,5 +49,8 @@ jobs:
                     export DOCKER_TAG=${{ github.sha }}
                     echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ vars.DOCKERHUB_USER }} --password-stdin
                     cd ~/ai-chat-app-prod
+                    touch .env
+                    chmod 800 .env
+                    echo "GROQ_API_KEY=${{ secrets.GROQ_API_KEY }}" >> .env
                     docker compose down && docker compose up -d --build --force-recreate --pull always
                     
