@@ -3,15 +3,20 @@ from dotenv import load_dotenv
 import os
 import requests
 
+
 load_dotenv()
 
+
 app = Flask(__name__)
+
 
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY", "")
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 MODEL = "llama-3.3-70b-versatile"
 
+
 SYSTEM_PROMPT = "You are a helpful, concise, and friendly AI assistant."
+
 
 def format_messages(history):
     """Format chat history into llama instruction format."""
@@ -73,5 +78,7 @@ def chat():
     except Exception as e:
         return jsonify({"error": "An error occurred. Please try again."}), 500
 
+
 # if __name__ == "__main__":
 #     app.run(host="0.0.0.0", port=5000, debug=False)
+
