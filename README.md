@@ -59,7 +59,7 @@ push to main
         Deploy to Server ───── SSH into EC2, docker compose up
 ```
 
-The root pipeline is `devsecops-pipeline.yml`. On `push` to `main`, it executes a secure, gated deployment flow.
+The root pipeline is `devsecops-pipeline.yml`. On `push` to `main`, it executes all the following workflows.
 
 | Workflow | Purpose | Key tools |
 |---|---|---|
