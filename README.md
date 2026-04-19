@@ -1,4 +1,5 @@
 # AI Chat App
+## End-to-End DevSecOps CI/CD Pipeline
 
 An AI Chat Application created using Flask, with an end-to-end CI/CD + DevSecOps pipeline built entirely using GitHub Actions.
 
@@ -114,9 +115,10 @@ This app is intentionally minimal to keep the security baseline small.
 
 - Security checks are enforced before any deployment step.
 
----
 <br/>
 
-<b>Aayush Madan</b>
-<br/>
-Email: [aayush.madan4611@gmail.com](aayush.madan4611@gmail.com)
+---
+
+**Aayush Madan**
+- **Email**: aayush.madan4611@gmail.com
+- **LinkedIn**: [http://www.linkedin.com/in/aayush-madan-devops](http://www.linkedin.com/in/aayush-madan-devops)
