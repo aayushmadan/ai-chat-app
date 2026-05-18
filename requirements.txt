@@ -4,3 +4,4 @@ gunicorn
 python-dotenv
 flake8
 bandit
+pytest

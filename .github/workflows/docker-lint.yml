@@ -1,4 +1,4 @@
-# Scans Dockerfile for issues and CVEs
+# Scans Dockerfile for issues and CVEs (Common Vurnerablities and Exposures)
 
 name: Docker Lint
 
